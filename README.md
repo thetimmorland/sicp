@@ -62,3 +62,11 @@ https://sarabander.github.io/sicp
         ((and (< b a) (< b c)) (sum-of-squares a c)) ; b is smallest
         (else (sum-of-squares a b))))                ; c is smallest
 ```
+
+## Exercise 1.4
+
+The procedure can be described as: Add b to a if b is greater than zero, otherwise subtract b from a.
+
+## Exercise 1.5
+
+An interpreter which uses applicative-order evaluation will run out of memory trying to expand `(p)`, while an interpreter which uses normal-order evaluation will never evaluate `(p)` since `(= x 0)` is `#t`.
