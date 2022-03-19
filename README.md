@@ -70,3 +70,40 @@ The procedure can be described as: Add b to a if b is greater than zero, otherwi
 ## Exercise 1.5
 
 An interpreter which uses applicative-order evaluation will run out of memory trying to expand `(p)`, while an interpreter which uses normal-order evaluation will never evaluate `(p)` since `(= x 0)` is `#t`.
+
+## Exercise 1.6
+
+When calling `new-if` the then-clause and else-clause are both evaluated regardless of the predicate resulting in infinite recursion. The regular `if` expression does not have this problem because it only evaluates one of the clauses, depending on the predicate. 
+
+## Exercise 1.7
+
+For very small numbers `good-enough?` will return `#t` even if the error is very large proportionally to the actual answer.
+
+For very large numbers the act of squaring `x` will result in a very low precision number which will not satisfy `(< (abs (- (square guess) x)) 0.001))`.
+
+```
+(define (good-enough guess last-guess)
+  (< (abs (- guess last-guess)) 0.001))
+```
+
+## Exercise 1.8
+
+```
+(define (square x) (* x x))
+(define (abs x) (if (> x 0) x (- x)))
+
+(define (cube-root x)
+  (cube-root-iter 0 1.0 x))
+
+(define (cube-root-iter last-guess guess x)
+  (cond ((good-enough? last-guess guess) guess)
+        (else (cube-root-iter guess (improve-guess guess x) x))))
+
+(define (improve-guess guess x)
+  (/ (+ (/ x (square guess))
+        (* 2 guess))
+     3))
+
+(define (good-enough? guess last-guess)
+  (< (abs (- guess last-guess)) 0.001))
+```
