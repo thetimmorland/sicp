@@ -82,8 +82,8 @@ For very small numbers `good-enough?` will return `#t` even if the error is very
 For very large numbers the act of squaring `x` will result in a very low precision number which will not satisfy `(< (abs (- (square guess) x)) 0.001))`.
 
 ```
-(define (good-enough guess last-guess)
-  (< (abs (- guess last-guess)) 0.001))
+(define (good-enough guess last-guess x)
+  (< (abs (- guess last-guess)) (/ x 1000))
 ```
 
 ## Exercise 1.8
