@@ -230,3 +230,43 @@ Inductive Case
     = phi^n(phi^2) - psi^n(phi^2) // because of definition of golden ratio x^2=x+1
     = phi^n+2 - psi^n+2
 ```
+
+## Exercise 1.14
+
+```
+(define (cc amount kinds-of-coins)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) 
+             (= kinds-of-coins 0)) 
+         0)
+        (else 
+         (+ (cc amount (- kinds-of-coins 1))
+            (cc (- amount (first-denomination 
+                           kinds-of-coins))
+                kinds-of-coins)))))
+
+(define (first-denomination kinds-of-coins)
+  (cond ((= kinds-of-coins 1) 1)
+        ((= kinds-of-coins 2) 5)
+        ((= kinds-of-coins 3) 10)
+        ((= kinds-of-coins 4) 25)
+        ((= kinds-of-coins 5) 50)))
+
+(+
+  (+
+    (+
+      (+
+        (cc 11 1)         ; 1
+        (+
+          (cc 6 1)        ; 1
+          (+
+            (cc 1 1)      ; 1
+            (cc -4 2))))  ; 0
+      (cc 1 3))           ; 1
+    (cc -14 4))           ; 0
+  (cc -39 5))             ; 0
+```
+
+Space complexity: O(n) because average height of call tree is dominated by the expansion of `(cc n 1)`.
+
+Time complexity: O(n^kinds-of-coins) because `(cc n 1)` is O(n) and `(cc n 2)` is O(n^2) etc...
