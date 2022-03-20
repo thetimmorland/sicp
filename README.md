@@ -270,3 +270,23 @@ Inductive Case
 Space complexity: O(n) because average height of call tree is dominated by the expansion of `(cc n 1)`.
 
 Time complexity: O(n^kinds-of-coins) because `(cc n 1)` is O(n) and `(cc n 2)` is O(n^2) etc...
+
+## Exercise 1.15
+
+```
+(define (cube x) (* x x x))
+(define (p x) (- (* 3 x) (* 4 (cube x))))
+(define (sine angle)
+   (if (not (> (abs angle) 0.1))
+       angle
+       (p (sine (/ angle 3.0)))))
+```
+
+`(sine a)` repeatedly divides it's argument by three until it is less than 0.1, so the following can be used to caluculate how many times `p` is evaluated:
+
+```
+> (ceiling (log (/ 12.5 0.01) 3))
+7.0
+```
+
+The order of growth for `(sine a)` in both time and space is O(log a).
