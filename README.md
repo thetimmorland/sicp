@@ -191,3 +191,13 @@ This process is iterative.
           (else (f-i (+ a (* 2 b) (* 3 c)) a b (- count 1)))))
   (f-i 2 1 0 (- n 2)))
 ```
+
+## Exercise 1.12
+
+```
+(define (pascal x y)
+  (if (or (= x 0) (= x y))
+      1
+      (+ (pascal (dec x) (dec y))
+         (pascal x (dec y)))))
+```
