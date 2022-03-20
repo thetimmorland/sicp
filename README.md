@@ -107,3 +107,32 @@ For very large numbers the act of squaring `x` will result in a very low precisi
 (define (good-enough? guess last-guess)
   (< (abs (- guess last-guess)) 0.001))
 ```
+
+## Exercise 1.9
+
+### Procedure A
+
+```
+(+ 4 5)
+(inc (+ 3 5))
+(inc (inc (+ 2 5)))
+(inc (inc (inc (+ 1 5))))
+(inc (inc (inc (inc (+ 0 5)))))
+(inc (inc (inc (inc 5))))
+9
+```
+
+This process is recursive.
+
+### Procedure B
+
+```
+(+ 4 5)
+(+ 3 6)
+(+ 2 7)
+(+ 1 8)
+(+ 0 9)
+9
+```
+
+This process is iterative.
