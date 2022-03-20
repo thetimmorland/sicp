@@ -171,3 +171,23 @@ This process is iterative.
 (define (g n) (A 1 n)) ; 2^n
 (define (h n) (A 2 n)) ; 2^2^2... n times
 ```
+
+## Exercise 1.11
+
+```
+(define (f n)
+  (if (< n 3)
+      n
+      (+ (f (- n 1))
+         (* 2 (f (- n 2)))
+         (* 3 (f (- n 3))))))
+```
+
+```
+(define (f n)
+  (define (f-i a b c count)
+    (cond ((< n 3) n)
+          ((<= count 0) a)
+          (else (f-i (+ a (* 2 b) (* 3 c)) a b (- count 1)))))
+  (f-i 2 1 0 (- n 2)))
+```
