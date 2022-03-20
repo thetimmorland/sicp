@@ -201,3 +201,32 @@ This process is iterative.
       (+ (pascal (dec x) (dec y))
          (pascal x (dec y)))))
 ```
+
+## Exercise 1.13
+
+Proof: Fib(n) is the closest integer to phi^n/sqrt(5).
+
+```
+Show Fib(n) = (phi^n - psi^n) / sqrt(5) where
+  phi = (1 + sqrt(5)) / 2
+  psi = (1 - sqrt(5)) / 2
+
+Base Cases
+  Fib(0) = 0
+  (phi^0 - psi^0) / sqrt(5) = 0 / sqrt(5) = 0
+
+  Fib(1) = 1
+  (phi^1 - psi^1) / sqrt(5) = sqrt(5) / sqrt(5) = 1
+
+Inductive Case
+  Fib(n + 2) = Fib(n + 1) + Fib(n)
+
+  (phi^n+2 - psi^n+2) / sqrt(5)
+    = ((phi^n-1 - psi^n-1) / sqrt(5)) + ((phi^n - psi^n) / sqrt(5)) = 
+
+  phi^n+2 - psi^n+2
+    = phi^n+1 + phi^n - psi^n+1 + phi^n
+    = phi^n(phi + 1) - psi^n(psi + 1)
+    = phi^n(phi^2) - psi^n(phi^2) // because of definition of golden ratio x^2=x+1
+    = phi^n+2 - psi^n+2
+```
