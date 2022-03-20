@@ -290,3 +290,18 @@ Time complexity: O(n^kinds-of-coins) because `(cc n 1)` is O(n) and `(cc n 2)` i
 ```
 
 The order of growth for `(sine a)` in both time and space is O(log a).
+
+## Exercise 1.6
+
+```
+(define (fast-expt b n)
+  ;; invariant: ab^n is constant
+  (define (fast-expt-i a b n)
+    (cond ((= n 0)
+           a)
+          ((even? n)
+           (fast-expt-i a (square b) (/ n 2)))
+          (else
+           (fast-expt-i (* a b) b (dec n)))))
+  (fast-expt-i 1 b n))
+```
