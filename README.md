@@ -305,3 +305,32 @@ The order of growth for `(sine a)` in both time and space is O(log a).
            (fast-expt-i (* a b) b (dec n)))))
   (fast-expt-i 1 b n))
 ```
+
+## Exercise 1.17
+
+```
+(define (double x) (* x 2))
+(define (half x) (/ x 2))
+(define (* a b)
+  (cond ((= b 0)
+         0)
+        ((even? b)
+         (* (double a) (half b)))
+        (else
+         (+ a (* a (dec b))))))
+```
+
+## Exercise 1.18
+
+```
+(define (double x) (* x 2))
+(define (half x) (/ x 2))
+(define (* a b)
+  ;; invariant: a * b is constant
+  (cond ((= b 0)
+         0)
+        ((even? b)
+         (* (double a) (half b)))
+        (else
+         (* (+ a b) (dec b)))))
+```
