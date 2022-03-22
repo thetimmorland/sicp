@@ -376,3 +376,33 @@ Therefore p' = p^2 + q^2
                    q
                    (- count 1)))))
 ```
+
+## Exercise 1.20
+
+```
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+;; normal-order, ??? remainder ops
+;; note that remainder ops will be evaluated to check if-condition
+(gcd 206 40)
+(gcd 40 (remainder 206 40))                                
+(gcd (remainder 206 40) (remainder 40 (remainder 206 40)))
+(gcd (remainder 40 (remainder 206 40))
+     (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))
+;; etc...
+
+;; applicative-order, four remainder ops
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd 40 6)
+(gcd 6 (remainder 40 6))
+(gcd 6 4)
+(gcd 4 (remainder 6 4))
+(gcd 4 2)
+(gcd 2 (remainder 4 2))
+(gcd 2 0)
+2
+```
