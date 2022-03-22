@@ -334,3 +334,45 @@ The order of growth for `(sine a)` in both time and space is O(log a).
         (else
          (* (+ a b) (dec b)))))
 ```
+
+## Exercise 1.19
+
+```
+Tpq = a <- bq + aq + ap
+      b <- bp + aq
+
+Tpq^2 = a <- (bp + aq)q + (bq + aq + ap)q + (bq + aq + ap)p
+        b <- (bp + aq)p + (bq + aq + ap)q
+
+Using transform for b:
+
+(bp + aq)p + (bq + aq + ap)q = bp^2 + bq^2 + aq^2 + 2paq
+                             = b(p^2 + q^2) + a(q^2 + 2pq)
+
+Therefore p' = p^2 + q^2
+      and q' = q^2 + 2pq
+```
+
+```
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+
+(define (fib-iter a b p q count)
+  (cond ((= count 0) 
+         b)
+        ((even? count)
+         (fib-iter a
+                   b
+                   (+ (* p p) (* q q))
+                   (+ (* q q) (* 2 p q))
+                   (/ count 2)))
+        (else 
+         (fib-iter (+ (* b q) 
+                      (* a q) 
+                      (* a p))
+                   (+ (* b p) 
+                      (* a q))
+                   p
+                   q
+                   (- count 1)))))
+```
