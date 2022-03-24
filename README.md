@@ -475,3 +475,39 @@ The time to test primes near 1000000 should be 6/3 = 2 times the time to test pr
 ## Exercise 1.25
 
 This implementation of `expmod` would involve computing very large exponents which would take conciderably longer.
+
+## Exercise 1.26
+
+With this change, `expmod` becomes `O(n^2)`. When used within the once `O(log n)` `fast-prime?` the result is `fast-prime` becomes `O(n)`.
+
+## Exercise 1.27
+
+```
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (remainder 
+          (square (expmod base (/ exp 2) m))
+          m))
+        (else
+         (remainder 
+          (* base (expmod base (- exp 1) m))
+          m))))
+
+(define (carmichael-i? n a)
+  (cond
+    ((= a 0)
+     true)
+    ((= (expmod a n n) a)
+     (carmichael-i? n (dec a)))
+    (else
+     false)))
+
+(define (carmichael? n)
+  (carmichael-i? n (dec n)))
+
+(carmichael? 561)  ; #t
+(carmichael? 1105) ; #t
+(carmichael? 1729) ; #t
+(carmichael? 2465) ; #t
+```
