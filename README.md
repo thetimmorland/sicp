@@ -406,3 +406,72 @@ Therefore p' = p^2 + q^2
 (gcd 2 0)
 2
 ```
+
+## Exercises 1.21 and 1.22
+
+```
+Finding first 3 primes >= 199.
+Found Prime: 199 in 7 us.
+Found Prime: 211 in 0 us.
+Found Prime: 223 in 1 us.
+Finding first 3 primes >= 1999.
+Found Prime: 1999 in 4 us.
+Found Prime: 2003 in 3 us.
+Found Prime: 2011 in 2 us.
+Finding first 3 primes >= 19999.
+Found Prime: 20011 in 6 us.
+Found Prime: 20021 in 7 us.
+Found Prime: 20023 in 10 us.
+
+199:   avg 1 ~= sqrt(1)
+1999:  avg 3 ~= sqrt(10)
+19999: avg 8 ~= sqrt(100)
+```
+
+As shown in the averages above the observed runtimes are roughly `O(sqrt(n))`
+
+
+## Exercise 1.23
+
+```
+Finding first 3 primes >= 199.
+Found Prime: 199 in 7 us.
+Found Prime: 211 in 0 us.
+Found Prime: 223 in 0 us.
+Finding first 3 primes >= 1999.
+Found Prime: 1999 in 1 us.
+Found Prime: 2003 in 1 us.
+Found Prime: 2011 in 3 us.
+Finding first 3 primes >= 19999.
+Found Prime: 20011 in 3 us.
+Found Prime: 20021 in 3 us.
+Found Prime: 20023 in 4 us.
+
+199:   avg 0 ~= sqrt(0)
+1999:  avg 1 ~= sqrt(1)
+19999: avg 3 ~= sqrt(10)
+```
+
+This change roughly halved the runtime of the algorithm and the averages are still roughly `O(sqrt(n))`.
+
+## Exercise 1.24
+
+```
+Found Prime: 199 in 15 us.
+Found Prime: 211 in 3 us.
+Found Prime: 223 in 3 us.
+Finding first 3 primes >= 1999.
+Found Prime: 1999 in 10 us.
+Found Prime: 2003 in 6 us.
+Found Prime: 2011 in 5 us.
+Finding first 3 primes >= 19999.
+Found Prime: 20011 in 6 us.
+Found Prime: 20021 in 4 us.
+Found Prime: 20023 in 12 us.
+```
+
+The time to test primes near 1000000 should be 6/3 = 2 times the time to test primes near 1000. My data roughly aligns with this.
+
+## Exercise 1.25
+
+This implementation of `expmod` would involve computing very large exponents which would take conciderably longer.
