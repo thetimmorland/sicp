@@ -589,3 +589,44 @@ With this change, `expmod` becomes `O(n^2)`. When used within the once `O(log n)
         (iter (next a) (+ (term a) result))))
   (iter a 0))
 ```
+
+## Exercise 1.31
+
+```
+(define (product term a next b)
+  (if (> a b)
+    1
+    (* (term a)
+       (product term (next a) next b))))
+
+(define (product-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+      result
+      (iter (inc a)
+            (* result (term a)))))
+  (iter a 1))
+
+(define (factorial n)
+  (product identity 1 inc n))
+
+(define (aprox-pi n)
+  (* 4
+     (/ (product upper-term 0 inc n)
+        (product lower-term 0 inc n))))
+
+(define (upper-term n)
+  ;; 2, 4, 4, 6, 6, 8...
+  (if (= n 0)
+    2
+    (+ 4
+       (* 2
+          (floor (/ (- n 1)
+                    2))))))
+
+(define (lower-term n)
+  ;; 3, 3, 5, 5, 7, 7...
+  (+ 3
+     (* 2
+        (floor (/ n 2)))))
+```
