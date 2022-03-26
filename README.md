@@ -578,3 +578,14 @@ With this change, `expmod` becomes `O(n^2)`. When used within the once `O(log n)
 (integral cube 0 1 0.001)
 (simp cube 0 1 100)
 ```
+
+## Exercise 1.30
+
+```
+(define (sum term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (+ (term a) result))))
+  (iter a 0))
+```
