@@ -681,3 +681,11 @@ With this change, `expmod` becomes `O(n^2)`. When used within the once `O(log n)
     (= (gcd x n) 1))
   (filter-accumulate prime? + 0 square 1 inc (dec n)))
 ```
+
+## Exercise 1.34
+
+```
+(f f) ;; reduces to
+(f 2) ;; reduces to
+(2 2) ;; error
+```
