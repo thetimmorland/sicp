@@ -654,3 +654,30 @@ With this change, `expmod` becomes `O(n^2)`. When used within the once `O(log n)
 (define (product term a next b)
   (accumulate * 1 term a next b))
 ```
+
+## Exercise 1.33
+
+```
+(define (filter-accumulate filter combiner null-value term a next b)
+  (if (> a b)
+    null-value
+    (combiner (if (filter a)
+                (term a)
+                null-value)
+              (filter-accumulate
+                filter
+                combiner
+                null-value
+                term
+                (next a)
+                next
+                b))))
+
+(define (sum-of-prime-squares a b)
+  (filter-accumulate prime? + 0 square a inc b))
+
+(define (sum-of-relative-primes n)
+  (define (filter x)
+    (= (gcd x n) 1))
+  (filter-accumulate prime? + 0 square 1 inc (dec n)))
+```
