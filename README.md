@@ -689,3 +689,17 @@ With this change, `expmod` becomes `O(n^2)`. When used within the once `O(log n)
 (f 2) ;; reduces to
 (2 2) ;; error
 ```
+
+## Exercise 1.35
+
+```
+a and b are the golden ratio iff (a + b) / a = a / b
+phi = a + b / a
+    = a / a + b / a
+    = 1 + b / a
+    = 1 + 1 / phi
+```
+
+```
+(fixed-point (lambda (x) (+ 1 (/ 1 x))) 1.0) ;; 1.6180327868852458
+```
