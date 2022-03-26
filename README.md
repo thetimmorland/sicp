@@ -703,3 +703,10 @@ phi = a + b / a
 ```
 (fixed-point (lambda (x) (+ 1 (/ 1 x))) 1.0) ;; 1.6180327868852458
 ```
+
+## Exercise 1.36
+
+```
+(fixed-point (lambda (x) (/ (log 1000) (log x))) 2) ;; 35 steps
+(fixed-point (lambda (x) (/ (+ x (/ (log 1000) (log x))) 2)) 2) ;; 10 steps
+```
