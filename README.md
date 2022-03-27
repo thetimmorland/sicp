@@ -917,3 +917,12 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
     (* (x-point dimensions)
        (y-point dimensions))))
 ```
+
+## Exercise 2.4
+
+```
+(cons (car 0 1))
+((lambda (m) (m 0 1) (lambda (p q) p))
+((lambda (p q) p) 0 1)
+0)
+```
