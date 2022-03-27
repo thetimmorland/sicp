@@ -852,3 +852,14 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
      f)
    x))
 ```
+
+## Exercise 2.1
+
+```
+(define (make-rat n d)
+  (if (negative? d)
+      (make-rat (- n) (- d))
+      (let ((g (gcd n d)))
+        (cons (/ n g) 
+              (/ d g)))))
+```
