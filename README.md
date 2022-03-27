@@ -800,3 +800,16 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
     (compose f
              (repeated f (dec n)))))
 ```
+
+## Exercise 1.44
+
+```
+(define (smooth f)
+  (lambda (x) (/ (+ (f (- x dx))
+                    (f x)
+                    (f (+ x dx)))
+                 3)))
+
+(define (n-smooth f n)
+  (repeated smooth n) f)
+```
