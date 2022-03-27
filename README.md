@@ -942,3 +942,27 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
     (inc (cdr (/ p 3)))
     0))
 ```
+
+## Exercise 2.6
+
+```
+;; applies f to x one time
+(define one
+  (lambda (f)
+    (lambda (x)
+      (f x))))
+
+;; applies f to x two times
+(define two
+  (lambda (f)
+    (lambda (x)
+      (f (f x)))))
+
+;; compose (a f) with (b f) 
+(define (add a b)
+  (lambda (f)
+    (lambda (x)
+      ((a f) ((b f) x)))))
+
+(((add one two) inc) 0) ; 3
+```
