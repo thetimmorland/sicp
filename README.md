@@ -764,3 +764,13 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
               (lambda (i) (- 1 (* i 2)))
               k))
 ```
+
+## Exercise 1.40
+
+```
+(define (cubic a b c)
+  (lambda (x) (+ (cube x)
+                 (* a (square x))
+                 (* b x)
+                 c)))
+```
