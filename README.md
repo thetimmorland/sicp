@@ -926,3 +926,19 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
 ((lambda (p q) p) 0 1)
 0)
 ```
+
+## Exercise 2.5
+
+```
+(define (cons a b) (* (expt 2 a) (expt 3 b)))
+
+(define (car p)
+  (if (= (modulo p 2) 0)
+    (inc (car (/ p 2)))
+    0))
+
+(define (cdr p)
+  (if (= (modulo p 3) 0)
+    (inc (cdr (/ p 3)))
+    0))
+```
