@@ -972,3 +972,20 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
 For addition, the width of the result will always be the sum of the widths of the two arguments. This can be seen from the definition for addition, which produces a new interval which is the sum of the lower bounds added to the sum of the upper bounds. Addition results in the same change regardless of what is being added to, so only the widths matter, not the position of the intervals. Since subtraction is defined in terms of addition this property holds for it as well.
 
 For multiplication the resulting interval will be different depending on the positions of the intervals. This is due to the property of multiplication scaling larger numbers more. Since division is defined in terms of multiplication this property holds for it as well.
+
+## Exercise 2.13
+
+Experimentation below shows that for small percentage tolerances the resulting tolerance after multiplication is approximately equal to the sum of the two original tolerances.
+
+```
+> (percent
+    (mul-interval
+      (make-center-percent 1.0 1.0)
+      (make-center-percent 1.0 1.0)))
+1.999800019998002
+> (percent
+    (mul-interval
+      (make-center-percent 1.0 2.0)
+      (make-center-percent 1.0 1.0)))
+2.9994001199760074
+```
