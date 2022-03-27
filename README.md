@@ -740,3 +740,16 @@ phi = a + b / a
 ```
 
 Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
+
+## Exercise 1.38
+
+```
+(define (n i)
+  (if (= (modulo (+ i 1) 3) 0)
+    (* (/ (+ i 1) 3) 2)
+    1))
+
+(+ 2 (cont-frac (lambda (i) 1.0)
+                n
+                100))
+```
