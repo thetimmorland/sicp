@@ -824,3 +824,31 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
                                (expt y (- n 1)))))
                1.0))
 ```
+
+## Exercise 1.46
+
+```
+(define (iterative-improve good-enough? improve)
+  (define (inner x)
+    (if (good-enough? x)
+      x
+      (inner (improve x))))
+  inner)
+      
+
+(define (sqrt x)
+  ((iterative-improve
+    (lambda (guess) (< (abs (- (square guess) x)) 0.001))
+    (lambda (guess) (average guess (/ x guess))))
+   x))
+    
+(define (fixed-point f x)
+  (define tolerance 0.00001)
+  (define (close-enough? v1 v2)
+    (< (abs (- v1 v2)) 
+       tolerance))
+  ((iterative-improve
+     (lambda (guess) (close-enough? guess (f guess)))
+     f)
+   x))
+```
