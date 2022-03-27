@@ -790,3 +790,13 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
 (define (compose f g)
   (lambda (x) (f (g x))))
 ```
+
+## Exercise 1.43
+
+```
+(define (repeated f n)
+  (if (= n 0)
+    identity
+    (compose f
+             (repeated f (dec n)))))
+```
