@@ -813,3 +813,14 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
 (define (n-smooth f n)
   (repeated smooth n) f)
 ```
+
+## Exercise 1.45
+
+```
+(define (nth-root n x)
+  (fixed-point ((repeated average-damp
+                          (ceiling (/ n 2.0)))
+                (lambda (y) (/ x
+                               (expt y (- n 1)))))
+               1.0))
+```
