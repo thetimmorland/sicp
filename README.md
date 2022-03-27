@@ -895,3 +895,25 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
     (make-segment (make-point 0 0)
                   (make-point 1 1))))
 ```
+
+## Exercise 2.3
+
+```
+;; model rectangle in a plain as two points
+;;   1. the position of the bottom-left corner
+;;   2. the position of the top right corner relative to the bottom-left corner
+(define make-rect cons)
+(define origin-rect car)
+(define dimensions-rect cdr)
+
+(define (perimiter-rect rect)
+  (let ((dimensions (dimensions-rect rect)))
+    (* 2
+       (+ (x-point dimensions)
+          (y-point dimensions)))))
+
+(define (area-rect rect)
+  (let ((dimensions (dimensions-rect rect)))
+    (* (x-point dimensions)
+       (y-point dimensions))))
+```
