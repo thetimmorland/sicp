@@ -753,3 +753,14 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
                 n
                 100))
 ```
+
+## Exercise 1.39
+
+```
+(define (tan-cf x k)
+   (cont-frac (lambda (i) (- (if (= x 1)
+                               x
+                               (* x x))))
+              (lambda (i) (- 1 (* i 2)))
+              k))
+```
