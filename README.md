@@ -774,3 +774,12 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
                  (* b x)
                  c)))
 ```
+
+## Exercise 1.41
+
+```
+(define (double f)
+  (lambda (x) (f (f x))))
+
+(((double (double double)) inc) 5) ; 21
+```
