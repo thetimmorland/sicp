@@ -783,3 +783,10 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
 
 (((double (double double)) inc) 5) ; 21
 ```
+
+## Exercise 1.42
+
+```
+(define (compose f g)
+  (lambda (x) (f (g x))))
+```
