@@ -863,3 +863,35 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
         (cons (/ n g) 
               (/ d g)))))
 ```
+
+## Exercise 2.2
+
+```
+(define make-segment cons)
+(define start-segment car)
+(define end-segment cdr)
+
+(define make-point cons)
+(define x-point car)
+(define y-point cdr)
+
+(define (midpoint-segment seg)
+  (make-point
+    (average (x-point (start-segment seg))
+             (x-point (end-segment seg)))
+    (average (y-point (start-segment seg))
+             (y-point (end-segment seg)))))
+
+(define (print-point p)
+  (newline)
+  (display "(")
+  (display (x-point p))
+  (display ",")
+  (display (y-point p))
+  (display ")"))
+
+(print-point
+  (midpoint-segment
+    (make-segment (make-point 0 0)
+                  (make-point 1 1))))
+```
