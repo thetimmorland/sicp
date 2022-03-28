@@ -1043,3 +1043,23 @@ Skipped.
 (define except-first-denomination cdr)
 (define first-denomination car)
 ```
+
+## Exercise 2.20
+
+```
+(define (filter p l)
+  (if (null? l)
+    nil
+    (let ((head (car l))
+          (tail (cdr l)))
+      (if (p (car l))
+       (cons head (filter p tail))
+       (filter p tail)))))
+
+(define (same-parity . x)
+  (filter
+    (if (even? (car x))
+      even?
+      odd?)
+    x))
+```
