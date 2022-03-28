@@ -1090,3 +1090,98 @@ Skipped.
       (p (car l))
       (for-each p (cdr l)))))
 ```
+
+## Exercise 2.24
+
+```
+[2, .] -> [3, .] -> [4, /]
+```
+
+## Exercise 2.25
+
+```
+(car (cdr (car (cdr (cdr (list 1 3 (list 5 7) 9))))))
+(car (car (list (list 7))))
+(car (cdr (cdr (cdr (cdr (cdr (cdr (list 1 2 3 4 5 6 7))))))))
+```
+
+## Exercise 2.26
+
+```
+> (define x (list 1 2 3))
+> (define y (list 4 5 6))
+> (append x y)
+(1 2 3 4 5 6)
+> (cons x y)
+((1 2 3) (4 5 6))
+> (list x y)
+((1 2 3) (4 5 6))
+```
+
+# Exercise 2.27
+
+```
+(define (deep-reverse l)
+  (if (list? l)
+    (reverse (map deep-reverse l))
+    l))
+```
+
+# Exercise 2.28
+
+```
+(define (fringe t)
+  (cond ((not (list? t)) (list t))
+        ((null? t) t)
+        (else
+          (append (fringe (car t))
+                  (fringe (cdr t))))))
+```
+
+## Exercise 2.29
+
+```
+(define (make-mobile left right)
+  (list left right))
+(define mobile? list?)
+(define left-branch car)
+(define (right-branch m) (car (cdr m)))
+
+(define (make-branch length structure)
+  (list length structure))
+(define branch-length car)
+(define (branch-structure b) (car (cdr b)))
+
+;; Mobile -> Number
+;; return the total weight of a mobile `m`
+(define (total-weight m)
+  (+ (branch-weight (left-branch m))
+     (branch-weight (right-branch m))))
+
+;; Branch -> Number
+;; return the weight of a branch `b`
+(define (branch-weight b)
+  (let ((s (branch-structure b)))
+    (if (mobile? s)
+      (total-weight s)
+      s)))
+
+;; Mobile -> Bool
+;; check if a mobile `m` is balanced
+(define (balanced? m)
+  (if (not (mobile? m))
+    true
+    (and
+      (= (branch-torque (left-branch m))
+         (branch-torque (right-branch m)))
+      (balanced? (branch-structure (left-branch m)))
+      (balanced? (branch-structure (right-branch m))))))
+
+;; Branch -> Number
+;; compute the torque of branch `b`
+(define (branch-torque b)
+  (* (branch-length b)
+     (branch-weight b)))
+```
+
+We only have to change the selectors and the predicate `mobile?` if we change the representations of our data.
