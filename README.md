@@ -1022,3 +1022,16 @@ Skipped.
     l
     (last-pair (cdr l))))
 ```
+
+## Exercise 2.18
+
+```
+(define (reverse l)
+  (define (inner l-a l-b)
+    (if (null? l-a)
+      l-b
+      (inner (cdr l-a)
+             (cons (car l-a)
+                   l-b))))
+  (inner l nil))
+```
