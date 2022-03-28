@@ -1035,3 +1035,11 @@ Skipped.
                    l-b))))
   (inner l nil))
 ```
+
+## Exercise 2.19
+
+```
+(define no-more? null?)
+(define except-first-denomination cdr)
+(define first-denomination car)
+```
