@@ -989,3 +989,7 @@ Experimentation below shows that for small percentage tolerances the resulting t
       (make-center-percent 1.0 1.0)))
 2.9994001199760074
 ```
+
+## Exercises 2.14 and 2.15
+
+Dividing a number by itself should always yield 1, however our interval arithmetic package is unable two tell if two intervals are the same (in the identity sense). For this reason it is better to use formulas which do not repeat the same variable, multiple times.
