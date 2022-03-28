@@ -1079,3 +1079,14 @@ Skipped.
 ## Exercise 2.22
 
 `cons` lists can only be built in a single direction, from the bottom up. Therefore an iterative process which `cdr`s down a list will end up placing the first element it processes onto the bottom of the resulting list. One solution to this problem is to apply `reverse` to the final list.
+
+## Exercise 2.23
+
+```
+(define (for-each p l)
+  (if (null? l)
+    nil
+    (begin
+      (p (car l))
+      (for-each p (cdr l)))))
+```
