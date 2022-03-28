@@ -1185,3 +1185,30 @@ Skipped.
 ```
 
 We only have to change the selectors and the predicate `mobile?` if we change the representations of our data.
+
+## Exercise 2.32
+
+```
+(define (square-tree tree)
+  (cond ((null? tree) nil)
+        ((not (pair? tree)) (square tree))
+        (else
+         (cons (square-tree (car tree))
+               (square-tree (cdr tree))))))
+
+(define (square-tree tree)
+  (cond ((null? tree) nil)
+        ((not (pair? tree)) (square tree))
+        (else (map square-tree tree))))
+```
+
+## Exercise 2.31
+
+```
+(define (tree-map f tree)
+  (cond ((null? tree) nil)
+        ((not (pair? tree)) (f tree))
+        (else
+         (cons (tree-map f (car tree))
+               (tree-map f (cdr tree))))))
+```
