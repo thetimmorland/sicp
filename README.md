@@ -1075,3 +1075,7 @@ Skipped.
 (define (square-list items)
   (map square items))
 ```
+
+## Exercise 2.22
+
+`cons` lists can only be built in a single direction, from the bottom up. Therefore an iterative process which `cdr`s down a list will end up placing the first element it processes onto the bottom of the resulting list. One solution to this problem is to apply `reverse` to the final list.
