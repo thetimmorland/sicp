@@ -282,7 +282,7 @@ Time complexity: O(n^kinds-of-coins) because `(cc n 1)` is O(n) and `(cc n 2)` i
        (p (sine (/ angle 3.0)))))
 ```
 
-`(sine a)` repeatedly divides it's argument by three until it is less than 0.1, so the following can be used to caluculate how many times `p` is evaluated:
+`(sine a)` repeatedly divides it's argument by three until it is less than 0.1, so the following can be used to calculate how many times `p` is evaluated:
 
 ```
 > (ceiling (log (/ 12.5 0.01) 3))
@@ -474,7 +474,7 @@ The time to test primes near 1000000 should be 6/3 = 2 times the time to test pr
 
 ## Exercise 1.25
 
-This implementation of `expmod` would involve computing very large exponents which would take conciderably longer.
+This implementation of `expmod` would involve computing very large exponents which would take considerably longer.
 
 ## Exercise 1.26
 
@@ -906,7 +906,7 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
 (define origin-rect car)
 (define dimensions-rect cdr)
 
-(define (perimiter-rect rect)
+(define (perimeter-rect rect)
   (let ((dimensions (dimensions-rect rect)))
     (* 2
        (+ (x-point dimensions)
