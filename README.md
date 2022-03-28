@@ -967,11 +967,27 @@ Using `cont-frac` with `k` = 11 produces 1/phi accurate to four decimal places.
 (((add one two) inc) 0) ; 3
 ```
 
+## Exercises 2.7 and 2.8
+
+See `interval-arithmetic.scm`.
+
 ## Exercise 2.9
 
 For addition, the width of the result will always be the sum of the widths of the two arguments. This can be seen from the definition for addition, which produces a new interval which is the sum of the lower bounds added to the sum of the upper bounds. Addition results in the same change regardless of what is being added to, so only the widths matter, not the position of the intervals. Since subtraction is defined in terms of addition this property holds for it as well.
 
 For multiplication the resulting interval will be different depending on the positions of the intervals. This is due to the property of multiplication scaling larger numbers more. Since division is defined in terms of multiplication this property holds for it as well.
+
+## Exercise 2.10
+
+See `interval-arithmetic.scm`.
+
+## Exercise 2.11
+
+Skipped.
+
+## Exercise 2.12
+
+See `interval-arithmetic.scm`.
 
 ## Exercise 2.13
 
@@ -993,3 +1009,7 @@ Experimentation below shows that for small percentage tolerances the resulting t
 ## Exercises 2.14 and 2.15
 
 Dividing a number by itself should always yield 1, however our interval arithmetic package is unable two tell if two intervals are the same (in the identity sense). For this reason it is better to use formulas which do not repeat the same variable, multiple times.
+
+## Exercise 2.16
+
+Skipped.
