@@ -1013,3 +1013,12 @@ Dividing a number by itself should always yield 1, however our interval arithmet
 ## Exercise 2.16
 
 Skipped.
+
+## Exercise 2.17
+
+```
+(define (last-pair l)
+  (if (null? (cdr l))
+    l
+    (last-pair (cdr l))))
+```
