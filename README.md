@@ -1212,3 +1212,16 @@ We only have to change the selectors and the predicate `mobile?` if we change th
          (cons (tree-map f (car tree))
                (tree-map f (cdr tree))))))
 ```
+
+## Exercise 2.32
+
+```
+(define (subsets s)
+  (if (null? s)
+      (list nil)
+      (let ((rest (subsets (cdr s))))
+        (append rest (map (lambda (x) (cons (car s) x))
+                          rest)))))
+```
+
+The subsets of a null set are just the null set ({}). This represents our base case. If we add another element `a` to our set, the subsets become {} and {a}. This is equivalent to `(map (lambda (x) (cons a x)) (subsets null))`. This pattern holds as we continue to add elements to the set.
