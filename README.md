@@ -1262,3 +1262,13 @@ The subsets of a null set are just the null set ({}). This represents our base c
                                (else 1)))
                        t)))
 ```
+
+## Exercise 2.36
+
+```
+(define (accumulate-n op init seqs)
+  (if (null? (car seqs))
+      nil
+      (cons (accumulate op init (map car seqs))
+            (accumulate-n op init (map cdr seqs)))))
+```
