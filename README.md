@@ -1225,3 +1225,17 @@ We only have to change the selectors and the predicate `mobile?` if we change th
 ```
 
 The subsets of a null set are just the null set ({}). This represents our base case. If we add another element `a` to our set, the subsets become {} and {a}. This is equivalent to `(map (lambda (x) (cons a x)) (subsets null))`. This pattern holds as we continue to add elements to the set.
+
+## Exercise 2.33
+
+```
+(define (map p sequence)
+  (accumulate (lambda (x y) (cons (p x) y))
+              nil sequence))
+
+(define (append seq1 seq2)
+  (accumulate cons seq2 seq1))
+
+(define (length sequence)
+  (accumulate (lambda (x y) (inc y)) 0 sequence))
+```
