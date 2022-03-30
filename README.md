@@ -1251,3 +1251,14 @@ The subsets of a null set are just the null set ({}). This represents our base c
    0
    coefficient-sequence))
 ```
+
+## Exercise 2.35
+
+```
+(define (count-leaves t)
+  (accumulate + 0 (map (lambda (x)
+                         (cond ((null? x) 0)
+                               ((pair? x) (count-leaves x))
+                               (else 1)))
+                       t)))
+```
