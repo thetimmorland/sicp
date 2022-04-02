@@ -1298,3 +1298,15 @@ The subsets of a null set are just the null set ({}). This represents our base c
 ```
 
 `op` must be commutative.
+
+## Exercise 2.39
+
+```
+(define (my-reverse sequence)
+  (fold-right
+    (lambda (x y) (append x (list y))) nil sequence))
+
+(define (my-reverse sequence)
+  (fold-left
+    (lambda (x y) (cons y x)) nil sequence))
+```
