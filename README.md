@@ -1287,3 +1287,14 @@ The subsets of a null set are just the null set ({}). This represents our base c
   (let ((cols (transpose n)))
     (map (lambda (row) (matrix-*-vector cols row)) m)))
 ```
+
+## Exercise 2.38
+
+```
+(fold-right / 1 (list 1 2 3))      ; (/ 1 3 2 1)
+(fold-left  / 1 (list 1 2 3))      ; (/ 1 1 2 3)
+(fold-right list nil (list 1 2 3)) ; (list 1 2 3 nil)
+(fold-left  list nil (list 1 2 3)) ; (list 3 2 1 nil)
+```
+
+`op` must be commutative.
