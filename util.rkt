@@ -9,7 +9,8 @@
  filter
  accumulate
  enumerate-interval
- enumerate-tree)
+ enumerate-tree
+ flatmap)
 
 (define (square x) (* x x))
 (define (cube x) (* x x x))
@@ -70,3 +71,6 @@
         (else (append
                (enumerate-tree (car tree))
                (enumerate-tree (cdr tree))))))
+
+(define (flatmap proc seq)
+  (accumulate append nil (map proc seq)))
