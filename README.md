@@ -1344,3 +1344,7 @@ The subsets of a null set are just the null set ({}). This represents our base c
     (lambda (triple) (= s (accumulate + 0 triple)))
     (unique-tuples n 3)))
 ```
+
+## Exercise 2.42
+
+See `eight-queens.rkt`
