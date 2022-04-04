@@ -1321,12 +1321,26 @@ The subsets of a null set are just the null set ({}). This represents our base c
            (enumerate-interval 1 (dec i))))
     (enumerate-interval 1 n)))
 ```
+
+## Exercise 2.41
+
+```
+(define (unique-tuples n m)
+  (define (iter result m)
+    (if (= m 0)
+      result
+      (iter (flatmap prepend-smaller result)
+            (dec m))))
+    (iter (map list (enumerate-interval 1 n))
+          (dec m)))
+
+(define (prepend-smaller lst)
+  (map (lambda (i)
+         (append (list i) lst))
+       (enumerate-interval 1 (dec (car lst)))))
+
+(define (triple-sum n s)
   (filter
-    (lambda (pair) (not (= (car pair) (cdr pair))))
-    (flatmap
-      (lambda (i)
-        (map (lambda (j)
-               (cons i j))
-             (enumerate-interval 1 i)))
-      (enumerate-interval 1 n))))
+    (lambda (triple) (= s (accumulate + 0 triple)))
+    (unique-tuples n 3)))
 ```
