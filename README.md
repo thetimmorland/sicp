@@ -1365,6 +1365,29 @@ See `eight-queens.rkt`
 
 Louis's implementation revaluates `queen-cols` once for each row in the board. because of this his program find a solution in time `Tn` where `n` is the number of rows in the board.
 
+## Exercise 2.53
+
+```
+> (list 'a 'b 'c)
+(a b c)
+> (list (list 'george))
+((george))
+> (list 'a 'b 'c)
+(a b c)
+> (list (list 'george))
+((george))
+> (cdr '((x1 x2) (y1 y2)))
+((y1 y2))
+> (cadr '((x1 x2) (y1 y2)))
+(y1 y2)
+> (pair? (car '(a short list)))
+#f
+> (memq 'red '((red shoes) (blue socks)))
+#f
+> (memq 'red '(red shoes blue socks))
+(red shoes blue socks)
+```
+
 ## Exercise 2.54
 
 ```
