@@ -1310,3 +1310,23 @@ The subsets of a null set are just the null set ({}). This represents our base c
   (fold-left
     (lambda (x y) (cons y x)) nil sequence))
 ```
+
+## Exercise 2.40
+
+```
+(define (unique-pairs n)
+  (flatmap
+    (lambda (i)
+      (map (lambda (j) (list j i))
+           (enumerate-interval 1 (dec i))))
+    (enumerate-interval 1 n)))
+```
+  (filter
+    (lambda (pair) (not (= (car pair) (cdr pair))))
+    (flatmap
+      (lambda (i)
+        (map (lambda (j)
+               (cons i j))
+             (enumerate-interval 1 i)))
+      (enumerate-interval 1 n))))
+```
