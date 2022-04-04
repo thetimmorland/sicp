@@ -2,6 +2,18 @@
 
 https://sarabander.github.io/sicp
 
+Note: the following snippet will make racket print lists and pairs more nicely.
+
+```
+(#%require (only racket/base
+                 print-as-expression
+                 print-pair-curly-braces
+                 print-mpair-curly-braces))
+(print-as-expression      #f)
+(print-pair-curly-braces  #t)
+(print-mpair-curly-braces #f)
+```
+
 ## Exercise 1.1
 
 ```
