@@ -1360,3 +1360,7 @@ The subsets of a null set are just the null set ({}). This represents our base c
 ## Exercise 2.42
 
 See `eight-queens.rkt`
+
+## Exercise 2.43
+
+Louis's implementation revaluates `queen-cols` once for each row in the board. because of this his program find a solution in time `Tn` where `n` is the number of rows in the board.
