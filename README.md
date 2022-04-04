@@ -1364,3 +1364,13 @@ See `eight-queens.rkt`
 ## Exercise 2.43
 
 Louis's implementation revaluates `queen-cols` once for each row in the board. because of this his program find a solution in time `Tn` where `n` is the number of rows in the board.
+
+## Exercise 2.54
+
+```
+(define (equal? a b)
+  (if (and (pair? a) (pair? b))
+    (and (equal? (car a) (car b))
+         (equal? (cdr a) (cdr b)))
+    (eq? a b)))
+```
