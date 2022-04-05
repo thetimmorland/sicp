@@ -1459,3 +1459,24 @@ See `symbolic-deriv-infix.rkt`
 ```
 
 This reperesentation may be preferable on systems with large amounts of memory where adjoin-set and union-set are common operations.
+
+## Exercise 2.61
+
+```
+(define (adjoin-set set1 set2)
+  (cond ((null? set1) set2)
+        ((null? set2) set1)
+        (else (let ((x1 (car set1)) (x2 (car set2)))
+                (cond ((= x1 x2)
+                       (cons x1 (adjoin-set
+                                  (cdr set1)
+                                  (cdr set2))))
+                      ((< x1 x2)
+                       (cons x1 (adjoin-set
+                                  (cdr set1)
+                                  set2)))
+                      ((< x2 x1)
+                       (cons x2 (adjoin-set
+                                  set1
+                                  (cdr set2)))))))))
+```
