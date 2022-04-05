@@ -1429,3 +1429,33 @@ See `symbolic-deriv-infix.rkt`
                     (union-set (cdr set1)
                                set2)))))
 ```
+
+## Exercise 2.60
+
+```
+;; Still O(n), however sets are now larger
+(define (element-of-set? x set)
+  (cond ((null? set) false)
+        ((equal? x (car set)) true)
+        (else (element-of-set? x (cdr set)))))
+
+;; O(1)
+(define (adjoin-set x set)
+  (cons x set))
+
+;; Still O(n)
+(define (intersection-set set1 set2)
+  (cond ((null? set1) '())
+        ((element-of-set? (car set1) set2)
+         (cons (car set1)
+               (intersection-set (cdr set1)
+                                 set2)))
+        (else (intersection-set (cdr set1)
+                                 set2))))
+
+;; O(n)
+(define (union-set set1 set2)
+  (append set1 set2))
+```
+
+This reperesentation may be preferable on systems with large amounts of memory where adjoin-set and union-set are common operations.
