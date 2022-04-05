@@ -1397,3 +1397,19 @@ Louis's implementation revaluates `queen-cols` once for each row in the board. b
          (equal? (cdr a) (cdr b)))
     (eq? a b)))
 ```
+
+## Exercise 2.55
+
+```
+'x  is the same as (quote x)
+''x is the same as (quote (quote x))
+(car (quote (quote x))) returns the head of the list which is quote
+```
+
+## Exercise 2.56
+
+See `symbolic-deriv.rkt`
+
+## Exercise 2.57
+
+See `symbolic-deriv.rkt`
