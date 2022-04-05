@@ -1413,3 +1413,7 @@ See `symbolic-deriv.rkt`
 ## Exercise 2.57
 
 See `symbolic-deriv.rkt`
+
+## Exercise 2.58
+
+See `symbolic-deriv-infix.rkt`
