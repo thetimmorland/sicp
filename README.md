@@ -1507,3 +1507,28 @@ This reperesentation may be preferable on systems with large amounts of memory w
 1. Both procedures perform an in-order traversal (left, center, right) to construct a list from the bottom up. Therefore they both produce the same list.
 
 2. The first procedure is O(n log n) since it performs an O(n) append once per level of the tree. The second procedure is O(n) since it performs a O(1) cons once per entry in the tree.
+
+## Exercise 2.64
+
+### Question 1
+
+Partial tree works by dividing the problem of constructing the tree into three subproblems:
+
+1. Constructing the left side from the first floor((n - 1) / 2) elements
+2. Constructing the center from the next elment
+3. Constructing the right side from the next n - (size(left side) + 1) elements
+
+```
+   5
+ /   \
+1     9
+ \   / \
+  3 7   11
+```
+
+### Question 2
+
+```
+T(n) = 2T(n/2) + O(1)
+     = O(n)
+```
