@@ -1532,3 +1532,13 @@ Partial tree works by dividing the problem of constructing the tree into three s
 T(n) = 2T(n/2) + O(1)
      = O(n)
 ```
+
+### Exercise 2.65
+
+```
+(define (union-set-tree set1 set2)
+  (list->tree (union-set (tree->list set1) (tree->list set2))))
+
+(define (intersection-set-tree set1 set2)
+  (list->tree (intersection-set (tree->list set1) (tree->list set2))))
+```
