@@ -1558,3 +1558,10 @@ T(n) = 2T(n/2) + O(1)
               (else
                (lookup given-key (right-branch set-of-records)))))))))
 ```
+
+## Exercise 2.67
+
+```
+> (decode sample-message sample-tree)
+(A D A B B C A)
+```
