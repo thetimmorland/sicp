@@ -96,3 +96,14 @@
     (if code
       (reverse code)
       (error "symbol not found in tree"))))
+
+(define (generate-huffman-tree pairs)
+  (successive-merge 
+   (make-leaf-set pairs)))
+
+(define (successive-merge set)
+  (cond ((null? set) '())
+        ((= (length set) 1) (car set))
+        (else (successive-merge (adjoin-set (make-code-tree (car set)
+                                                            (cadr set))
+                                            (cddr set))))))

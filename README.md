@@ -1569,3 +1569,9 @@ T(n) = 2T(n/2) + O(1)
 ## Exercise 2.68
 
 See `huffman-encoding.rkt`
+
+## Exercise 2.69
+
+See `huffman-encoding.rkt`
+
+
