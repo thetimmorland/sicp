@@ -1623,3 +1623,17 @@ The time to search for a symbol in the tree is proportional to the number of bit
 
 1. Most frequent symbol: O(1)
 2. Least frequent symbol: O(n)
+
+## Exercise 2.73
+
+### Part 1
+
+Instead of checking if an expression is a sum, product, or exponent we lookup the derivative procedure for the given operator and apply it to the operands. This cannot be done for `number?` and `variable` because they are represented by primitive so they are not tagged with a symbol to dispatch on.
+
+### Part 2 / 3
+
+See `symbolic-deriv-dyn.rkt`
+
+### Part 4
+
+Procedures would need to be installed with `(put 'op 'deriv (lambda (operands var) ...))`
