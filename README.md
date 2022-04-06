@@ -1565,3 +1565,7 @@ T(n) = 2T(n/2) + O(1)
 > (decode sample-message sample-tree)
 (A D A B B C A)
 ```
+
+## Exercise 2.68
+
+See `huffman-encoding.rkt`
