@@ -1501,3 +1501,9 @@ This reperesentation may be preferable on systems with large amounts of memory w
                          set1
                          (cdr set2))))))))
 ```
+
+## Exercise 2.63
+
+1. Both procedures perform an in-order traversal (left, center, right) to construct a list from the bottom up. Therefore they both produce the same list.
+
+2. The first procedure is O(n log n) since it performs an O(n) append once per level of the tree. The second procedure is O(n) since it performs a O(1) cons once per entry in the tree.
