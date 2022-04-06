@@ -1616,3 +1616,10 @@ a 1    b 2
 
 1. 1 bit is required to encode the most frequent symbol.
 2. n - 1 bits are required to encode the least frequent symbol.
+
+## Exercise 2.72
+
+The time to search for a symbol in the tree is proportional to the number of bits required to encode the symbol. For the most frequent symbol this is constant, for the least frequent symbol this is proportional to the number of other symbols.
+
+1. Most frequent symbol: O(1)
+2. Least frequent symbol: O(n)
