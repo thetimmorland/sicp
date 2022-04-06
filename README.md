@@ -1533,7 +1533,7 @@ T(n) = 2T(n/2) + O(1)
      = O(n)
 ```
 
-### Exercise 2.65
+## Exercise 2.65
 
 ```
 (define (union-set-tree set1 set2)
@@ -1541,4 +1541,20 @@ T(n) = 2T(n/2) + O(1)
 
 (define (intersection-set-tree set1 set2)
   (list->tree (intersection-set (tree->list set1) (tree->list set2))))
+```
+
+## Exercise 2.66
+
+```
+(define (lookup given-key set-of-records)
+  (define (lookup given-key set-of-records)
+    (if (null? set-of-records)
+      false
+      (let (current-key (key (entry set-of-records)))
+        (cond ((= given-key current-key)
+               (entry set-of-records))
+              ((< given-key current-key)
+               (lookup given-key (left-branch set-of-records))
+              (else
+               (lookup given-key (right-branch set-of-records)))))))))
 ```
