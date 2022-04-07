@@ -1637,3 +1637,29 @@ See `symbolic-deriv-dyn.rkt`
 ### Part 4
 
 Procedures would need to be installed with `(put 'op 'deriv (lambda (operands var) ...))`
+
+## Exercise 2.74
+
+```
+(define (type x)
+  (car x))
+
+(define (get-record personnel-file)
+  ((get 'get-record (type personnel-file))
+   personnel-file))
+
+(define (get-salary personnel-file)
+  ((get 'get-salary (type personnel-file))
+   personnel-file))
+
+  (define (get-name personnel-file)
+    ((get 'get-employee-name (type personnel-file))
+     personnel-file))
+
+(define (find-employee-record records name)
+  (cond ((null? records) (error "search failed"))
+        ((equal name (get-name (car records))) (car records))
+        (else (find-employee-record (cdr records) name))))
+```
+
+Each division's records must be structured so that `type` works, and each division must install `get-record`, `get-salary`, and `get-employee-name` for their record types. These conditions must be met when a new company is acquired.
