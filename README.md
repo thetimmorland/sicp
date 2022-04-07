@@ -1675,3 +1675,24 @@ Each division's records must be structured so that `type` works, and each divisi
           ((eq? op 'angle) a)
           (else (error "unknown op")))))
 ```
+
+## Exercise 2.76
+
+### Explicit dispatch
+
+- all generic procedures which directly access a type's structure must be modified to support new types
+- no existing procedures need to be modified to add additional operations
+
+### Data directed
+
+- the table must be modified to support additional types
+- the table must be modified to support additional procedures
+
+### Message passing
+
+- no exiting code needs to be modified to add additional types
+- each type must be modified to add additional procedures
+
+### Summary
+
+All of these strategies are similar, the differences begin in where the edits need to occur when the sytem is extended. Message passing / data directed systems are best when type are added frequently, and explicit dispatch is best when procedures are added frequently.
