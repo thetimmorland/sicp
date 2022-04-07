@@ -1663,3 +1663,15 @@ Procedures would need to be installed with `(put 'op 'deriv (lambda (operands va
 ```
 
 Each division's records must be structured so that `type` works, and each division must install `get-record`, `get-salary`, and `get-employee-name` for their record types. These conditions must be met when a new company is acquired.
+
+## Exercise 2.75
+
+```
+(define (make-from-mag-angle m a)
+  (lambda (op)
+    (cond ((eq? op 'real-part) (* m (cos a)))
+          ((eq? op 'imag-part) (* m (sin a)))
+          ((eq? op 'magnitude) m)
+          ((eq? op 'angle) a)
+          (else (error "unknown op")))))
+```
