@@ -1696,3 +1696,16 @@ Each division's records must be structured so that `type` works, and each divisi
 ### Summary
 
 All of these strategies are similar, the differences begin in where the edits need to occur when the sytem is extended. Message passing / data directed systems are best when type are added frequently, and explicit dispatch is best when procedures are added frequently.
+
+## Exercise 2.77
+
+This works because it performs a two stage dispatch which recursively calls magnitude on the contents of z.
+
+```
+(magnitude z)
+(apply-generic 'magnitude z)
+((get 'magnitude '(complex)) (contents z))
+(magnitude (contents z))
+(apply-generic 'magnitude (contents z))
+((get 'magnitude '(polar)) (contents (contents z)))
+```
