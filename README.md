@@ -1709,3 +1709,26 @@ This works because it performs a two stage dispatch which recursively calls magn
 (apply-generic 'magnitude (contents z))
 ((get 'magnitude '(polar)) (contents (contents z)))
 ```
+
+## Exercise 2.78
+
+```
+(define (attach-tag type-tag contents)
+  (if (number? contents)
+    contents
+    (cons type-tag contents)))
+
+(define (type-tag datum)
+  (cond ((number? datum) 'scheme-number)
+        ((pair? datum)
+         (cdr datum))
+        (else (error "Bad tagged datum: 
+                     CONTENTS" datum))))
+
+(define (contents datum)
+  (cond ((number? datum) datum)
+        ((pair? datum)
+         (cdr datum))
+        (else (error "Bad tagged datum: 
+                     CONTENTS" datum))))
+```
