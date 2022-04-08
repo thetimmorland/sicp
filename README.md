@@ -1732,3 +1732,12 @@ This works because it performs a two stage dispatch which recursively calls magn
         (else (error "Bad tagged datum: 
                      CONTENTS" datum))))
 ```
+
+## Exercise 2.79
+
+```
+(define (equ? a b)
+ (apply-generic '= a b))
+
+(put '= '(scheme-number scheme-number) =)
+```
