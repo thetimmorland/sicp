@@ -10,7 +10,16 @@
  accumulate
  enumerate-interval
  enumerate-tree
- flatmap)
+ flatmap
+ put
+ get
+ attach-tag
+ type-tag
+ contents
+ apply-generic
+ put-coercion
+ get-coercion
+ )
 
 (define (square x) (* x x))
 (define (cube x) (* x x x))
@@ -74,3 +83,38 @@
 
 (define (flatmap proc seq)
   (accumulate append nil (map proc seq)))
+
+(define *op-table* (make-hash))
+(define (put op type proc) (hash-set! *op-table* (list op type) proc))
+(define (get op type) (hash-ref *op-table* (list op type) #f))
+
+(define (attach-tag type-tag contents)
+  (cons type-tag contents))
+
+(define (type-tag datum)
+  (if (pair? datum)
+      (car datum)
+      (error "Bad tagged datum:
+              TYPE-TAG" datum)))
+
+(define (contents datum)
+  (if (pair? datum)
+      (cdr datum)
+      (error "Bad tagged datum:
+              CONTENTS" datum)))
+
+(define (apply-generic op . args)
+  (let ((type-tags (map type-tag args)))
+    (let ((proc (get op type-tags)))
+      (if proc
+          (apply proc (map contents args))
+          (error
+            "No method for these types:
+             APPLY-GENERIC"
+            (list op type-tags))))))
+
+(define *coercion-table* (make-hash))
+(define (put-coercion coercion type proc)
+  (hash-set! *coercion-table* (list coercion type) proc))
+(define (get-coercion coercion type)
+  (hash-ref *coercion-table* (list coercion type) #f))
