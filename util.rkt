@@ -1,5 +1,11 @@
 #lang sicp
 
+(#%require (only racket/base
+                 make-hash
+                 hash-set!
+                 hash-ref
+                 ))
+
 (#%provide
  square
  cube
