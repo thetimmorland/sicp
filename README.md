@@ -1741,3 +1741,12 @@ This works because it performs a two stage dispatch which recursively calls magn
 
 (put '= '(scheme-number scheme-number) =)
 ```
+
+## Exercise 2.80
+
+```
+(define (=zero? x)
+ (apply-generic '=zero? x))
+
+(put '=zero? '(scheme-number) zero?)
+```
