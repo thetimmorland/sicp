@@ -1791,3 +1791,36 @@ This works because it performs a two stage dispatch which recursively calls magn
                "No method for these types"
                (list op type-tags)))))))
 ```
+
+## Exercise 2.82
+
+```
+(define (apply-generic op . args)
+  (let ((type-tags (map type-tag args)))
+    (let ((proc (get op type-tags)))
+      (if proc
+        (apply proc (map contents args))
+        (cocerce-generic op args)))))
+
+(define (cocerce-generic op args)
+  (car (memf identity
+             (filter-map
+               (lambda (args) (member #f args))
+               (lambda (args)
+                 (let ((proc (get op (map type-tags args))))
+                   (if proc
+                     (apply proc (map contents args))
+                     #f)))
+               (map (lambda (x) (try-coerce (car x) (cadr x)))
+                    (product args))))))
+
+(define (try-coerce a1 a2)
+  (let ((t1 (type-tag a1))
+        (t2 (type-tag a2)))
+    (if (eq? t1 t2)
+      a1
+      (let ((t1->t2 (get-coercion t1 t2)))
+        (if t1->t2
+          (t1-t2 a1)
+          #f)))))
+```
