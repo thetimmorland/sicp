@@ -1,5 +1,6 @@
 #lang sicp
 
+(#%require "util.rkt")
 (#%require "symbolic-deriv.rkt")
 
 (define (deriv exp var)
@@ -14,20 +15,6 @@
 
 (define (operator exp) (car exp))
 (define (operands exp) (cdr exp))
-
-(define table '())
-
-(define (put op type item)
-  (set! table (cons (list op type item) table)))
-
-(define (get op type)
-  (define (inner table-prime)
-    (cond ((null? table) (error "lookup failed"))
-          ((and (equal? op (caar table-prime))
-                (equal? type (cadar table-prime)))
-           (caddar table-prime))
-          (else (inner (cdr table-prime)))))
-  (inner table))
 
 (put 'deriv '+
      (lambda (operands var)
