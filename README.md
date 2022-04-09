@@ -1871,3 +1871,26 @@ This works because it performs a two stage dispatch which recursively calls magn
                "insufficient funds")))
           (else (lambda (x) "unknown operation")))))
 ```
+
+## Exercise 3.4
+
+```
+(define (make-account amount passwd)
+  (define (withdrawl amount-prime)
+    (if (<= amount-prime amount)
+      (begin
+        (set! amount (- amount amount-prime))
+        amount)
+      "insufficient funds"))
+  (let ((num-incorrect-passwds 0))
+    (lambda (passwd-prime msg)
+      (if (not (eq? passwd-prime passwd))
+        (begin
+          (set num-incorrect-passwds (inc num-incorrect-passwds))
+          (if (> num-incorrect-passwds 7) (call-the-cops))
+          (lambda (x) "invalid password"))
+        (begin
+          (set num-incorrect-passwds 0)
+          (cond ((eq? msg 'withdrawl) withdrawl)
+                (else (lambda (x) "unknown operation"))))))))
+```
