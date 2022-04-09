@@ -1842,3 +1842,15 @@ This works because it performs a two stage dispatch which recursively calls magn
     (set! x (+ x y))
     x))
 ```
+
+## Exercise 3.2
+
+```
+(define (make-monitored f)
+  (let ((n 0))
+    (lambda (x)
+      (if (eq? x 'how-many-calls)
+        n
+        (begin (set! n (inc n))
+               (f x))))))
+```
