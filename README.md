@@ -1908,3 +1908,15 @@ This works because it performs a two stage dispatch which recursively calls magn
                             (< (+ (square x) (square y)) 1.0))
                           -1.0 1.0 -1.0 1.0))
 ```
+
+## Exercise 3.6
+
+```
+(define rand
+  (let ((x random-init))
+    (lambda (msg)
+      (cond ((eq? msg 'generate)
+             (begin (set! x (rand-update x)) x))
+            ((eq? msg 'reset)
+             (begin (set! x random-init) "rand reset"))))))
+```
