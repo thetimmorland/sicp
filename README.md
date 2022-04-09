@@ -1833,3 +1833,12 @@ This works because it performs a two stage dispatch which recursively calls magn
 (put 'raise '(rat) (lambda (x) (make-real (/ (numer x) (denom x)))))
 (put 'raise '(real) (lambda (x) (make-imag x 0)))
 ```
+
+## Exercise 3.1
+
+```
+(define (make-accumulator x)
+  (lambda (y)
+    (set! x (+ x y))
+    x))
+```
