@@ -1824,3 +1824,12 @@ This works because it performs a two stage dispatch which recursively calls magn
           (t1-t2 a1)
           #f)))))
 ```
+
+## Exercise 2.83
+
+```
+(define (raise x) (apply-generic 'raise x))
+(put 'raise '(integer) (lambda (x) (make-rat x 1)))
+(put 'raise '(rat) (lambda (x) (make-real (/ (numer x) (denom x)))))
+(put 'raise '(real) (lambda (x) (make-imag x 0)))
+```
