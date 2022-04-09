@@ -1854,3 +1854,20 @@ This works because it performs a two stage dispatch which recursively calls magn
         (begin (set! n (inc n))
                (f x))))))
 ```
+
+## Exercise 3.3
+
+```
+(define (make-account amount passwd)
+  (lambda (passwd-prime msg)
+    (cond ((not (eq? passwd-prime passwd))
+           (lambda (x) "invalid password"))
+          ((eq? msg 'withdrawl)
+           (lambda (amount-prime)
+             (if (<= amount-prime amount)
+               (begin
+                 (set! amount (- amount amount-prime))
+                 amount)
+               "insufficient funds")))
+          (else (lambda (x) "unknown operation")))))
+```
