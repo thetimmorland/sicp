@@ -1894,3 +1894,17 @@ This works because it performs a two stage dispatch which recursively calls magn
           (cond ((eq? msg 'withdrawl) withdrawl)
                 (else (lambda (x) "unknown operation"))))))))
 ```
+
+## Exercise 3.5
+
+```
+(define (estimate-integral p x1 x2 y1 y2)
+  (monte-carlo 1000
+               (lambda ()
+                 (p (+ x1 (random (- x2 x1)))
+                    (+ y1 (random (- y2 y1)))))))
+
+(* 4.0 (estimate-integral (lambda (x y)
+                            (< (+ (square x) (square y)) 1.0))
+                          -1.0 1.0 -1.0 1.0))
+```
