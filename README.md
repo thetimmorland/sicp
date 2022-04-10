@@ -1920,3 +1920,14 @@ This works because it performs a two stage dispatch which recursively calls magn
             ((eq? msg 'reset)
              (begin (set! x random-init) "rand reset"))))))
 ```
+
+## Exercise 3.7
+
+```
+(define (make-joint acc acc-pass new-pass)
+  (lambda (pass msg)
+    (if (not (eq? pass new-pass))
+      (lambda (_) "invalid password")
+      (acc acc-pass msg))))
+
+```
