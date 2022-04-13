@@ -1931,3 +1931,14 @@ This works because it performs a two stage dispatch which recursively calls magn
       (acc acc-pass msg))))
 
 ```
+
+## Exercise 3.8
+
+```
+(define y false)
+(define (f x)
+  (if (or y (= x 0))
+    (begin (set! y true)
+           0)
+    x))
+```
