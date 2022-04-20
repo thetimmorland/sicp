@@ -1952,3 +1952,7 @@ This works because it performs a two stage dispatch which recursively calls magn
 > (cdr x)
 '(b c d)
 ```
+
+## Exercise 3.13
+
+The box and pointer diagram is a ring.
