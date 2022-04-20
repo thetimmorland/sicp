@@ -1942,3 +1942,13 @@ This works because it performs a two stage dispatch which recursively calls magn
            0)
     x))
 ```
+
+## Exercise 3.12
+
+```
+> (car x)
+'(a b)
+
+> (cdr x)
+'(b c d)
+```
