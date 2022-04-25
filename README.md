@@ -1960,3 +1960,7 @@ The box and pointer diagram is a ring.
 ## Exercise 3.14
 
 `mystery` returns the reverse of `x`. However, `x` is mutated such that all elements except for the first are removed; this is because x still points to the last element of the resultant list.
+
+## Exercise 3.15
+
+For `z1` `set-to-wow!` modifies `car` and `cdr` of the argument due to structural sharing. For `z2` it only modifies the `car`.
