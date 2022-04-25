@@ -1964,3 +1964,35 @@ The box and pointer diagram is a ring.
 ## Exercise 3.15
 
 For `z1` `set-to-wow!` modifies `car` and `cdr` of the argument due to structural sharing. For `z2` it only modifies the `car`.
+
+## Exercise 3.16
+
+Ben's solution is incorrect because it allows pairs to be double counted if they are referenced in both the `car` and `cdr` of their parent.
+
+## Exercise 3.17
+
+```
+(define (count-pairs x)
+  (length (unique-pairs x)))
+
+(define (unique-pairs x)
+  (define (inner x s)
+    (if (not (pair? x))
+      s
+      (let ((s1 (set-add x s)))
+        (let ((s2 (inner (car x) s1)))
+          (inner (cdr x) s2)))))
+  (inner x empty-set))
+
+(define empty-set '())
+
+(define (set-add x s)
+  (if (mem-eq? x s)
+    s
+    (cons x s)))
+
+(define (mem-eq? x s)
+  (cond ((null? s) false)
+        ((eq? x (car s)) s)
+        (else (mem-eq? x (cdr s)))))
+```
