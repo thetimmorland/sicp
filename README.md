@@ -2029,3 +2029,12 @@ Ben's solution is incorrect because it allows pairs to be double counted if they
         (else (or (can-reach x (car y))
                   (can-reach x (cdr y))))))
 ```
+
+## Exercise 3.21
+
+The replies Ben sees are just a result of queues being a pair of the head and tail pointers.
+
+```
+(define (print-queue q)
+  (display (car q)))
+```
