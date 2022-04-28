@@ -2038,3 +2038,38 @@ The replies Ben sees are just a result of queues being a pair of the head and ta
 (define (print-queue q)
   (display (car q)))
 ```
+
+## Exercise 3.22
+
+```
+(define (make-queue)
+  (let ((front-ptr '())
+        (rear-ptr '()))
+    (define (self)
+      (cons front-ptr rear-ptr))
+    (define (empty-queue?)
+      (null? front-ptr))
+    (define (front-queue)
+      (if (empty-queue?)
+        (error "empty queue")
+        (car front-ptr)))
+    (define (insert-queue! item)
+      (let ((new-pair (cons item '())))
+        (cond ((empty-queue?)
+               (set! front-ptr new-pair)
+               (set! rear-ptr new-pair)
+               (self))
+              (else (set-cdr! rear-ptr new-pair)
+                    (set! rear-ptr new-pair)
+                    (self)))))
+    (define (delete-queue!)
+      (cond ((empty-queue?)
+             (error "empty queue"))
+            (else (set! front-ptr (cdr front-ptr))
+                  (self))))
+    (lambda (op)
+      (cond ((eq? op 'empty-queue?) empty-queue?)
+            ((eq? op 'front-queue) front-queue)
+            ((eq? op 'insert-queue!) insert-queue!)
+            ((eq? op 'delete-queue!) delete-queue!)))))
+```
