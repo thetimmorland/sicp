@@ -1996,3 +1996,18 @@ Ben's solution is incorrect because it allows pairs to be double counted if they
         ((eq? x (car s)) s)
         (else (mem-eq? x (cdr s)))))
 ```
+
+## Exercise 3.18
+
+```
+(define (has-cycle x)
+  (let ((seen empty-set))
+    (define (inner x)
+      (cond ((not (pair? x)) #f)
+            ((mem-eq? x seen) #t)
+            (else (begin
+                    (set! seen (set-add x seen))
+                    (or (inner (car x))
+                        (inner (cdr x)))))))
+    (inner x)))
+```
