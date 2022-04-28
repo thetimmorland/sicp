@@ -2011,3 +2011,21 @@ Ben's solution is incorrect because it allows pairs to be double counted if they
                         (inner (cdr x)))))))
     (inner x)))
 ```
+
+## Exercise 3.19
+
+```
+(define (has-cycle x)
+  (if (not (pair? x))
+    #f
+    (or (can-reach x (car x))
+        (can-reach x (cdr x))
+        (has-cycle (car x))
+        (has-cycle (cdr x)))))
+
+(define (can-reach x y)
+  (cond ((not (pair? y)) #f)
+        ((eq? x y) #t)
+        (else (or (can-reach x (car y))
+                  (can-reach x (cdr y))))))
+```
