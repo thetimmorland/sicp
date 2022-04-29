@@ -2073,3 +2073,63 @@ The replies Ben sees are just a result of queues being a pair of the head and ta
             ((eq? op 'insert-queue!) insert-queue!)
             ((eq? op 'delete-queue!) delete-queue!)))))
 ```
+
+## Exercise 3.23
+
+```
+(define (make-deque) (cons nil nil))
+(define (front-deque q) (car q))
+(define (rear-deque q) (cdr q))
+(define set-front-deque! set-car!)
+(define set-rear-deque! set-cdr!)
+(define (empty-deque? q) (null? (front-deque q)))
+
+(define (make-deque-item elem prev next) (list elem prev next))
+(define deque-item-elem car)
+(define deque-item-prev cadr)
+(define deque-item-next caddr)
+(define (set-deque-item-prev! item prev) (set-car! (cdr item) prev))
+(define (set-deque-item-next! item next) (set-car! (cddr item) next))
+
+(define (front-insert-deque! q elem)
+  (let ((new-item (make-deque-item elem
+                                   nil
+                                   (front-deque q))))
+    (cond ((empty-deque? q)
+           (set-front-deque! q new-item)
+           (set-rear-deque! q new-item)
+           q)
+          (else
+            (set-deque-item-prev! (front-deque q) new-item)
+            (set-front-deque! q new-item)
+            q))))
+
+(define (rear-insert-deque! q elem)
+  (let ((new-item (make-deque-item elem
+                                   (rear-deque q)
+                                   nil)))
+    (cond ((empty-deque? q)
+           (set-front-deque! q new-item)
+           (set-rear-deque! q new-item)
+           q)
+          (else
+           (set-deque-item-next! (rear-deque q) new-item)
+           (set-rear-deque! q new-item)
+           q))))
+
+(define (front-delete-deque! q)
+  (cond ((empty-deque? q)
+         (error "empty-queue"))
+        (else
+         (set-front-deque! q (deque-item-next (front-deque q)))
+         (set-deque-item-prev! (front-deque q) nil)
+         q)))
+
+(define (rear-delete-deque! q)
+  (cond ((empty-deque? q)
+         (error "empty-queue"))
+        (else
+         (set-rear-deque! q (deque-item-prev (rear-deque q)))
+         (set-deque-item-next! (rear-deque q) nil)
+         q)))
+```
