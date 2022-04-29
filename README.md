@@ -2133,3 +2133,24 @@ The replies Ben sees are just a result of queues being a pair of the head and ta
          (set-deque-item-next! (rear-deque q) nil)
          q)))
 ```
+
+## Exercise 3.24
+
+```
+(define (make-table same-key?)
+  (let ((local-table (list '*table*)))
+    (define (assoc key records)
+      (cond ((null? records) false)
+            ((same-key? key (caar records)) 
+             (car records))
+            (else (assoc key (cdr records)))))
+
+    ;; lookup and insert elided
+
+    (define (dispatch m)
+      (cond ((eq? m 'lookup-proc) lookup)
+            ((eq? m 'insert-proc!) insert!)
+            (else (error "Unknown operation:
+                         TABLE" m))))
+                        dispatch))
+```
